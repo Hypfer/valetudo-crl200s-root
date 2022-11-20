@@ -1,118 +1,123 @@
-# Viomi Rooting Tool
+# Valetudo CRL-200S root
 
-This tool aims to automate the rooting process described in
-[Rooting the Xiaomi STYJ02YM (viomi-v7) Vacuum Robot](https://itooktheredpill.irgendwo.org/2020/rooting-xiaomi-vacuum-robot/).
+This repository contains tooling to help with rooting 3irobotix CRL-200S-based vacuum robots such as
 
-It is known to work with the following models:
-
+* Viomi V2
 * Mijia STYJ02YM (viomi-v7)
-* Mijia STYTJ02YM (viomi-v8) (experimental)
+* Mijia STYTJ02YM (viomi-v8)
+* Cecotec Conga 3*90
+* Proscenic M6 pro
 
 ## Prerequisites
 
-* a linux (Mac, raspberry pi or OpenWRT router may also work) machine with
-  `bash`, `ssh`, `wget`, `adb` and `sha256sum`
-* the robot is already connected to your wifi (if you don't want to use the xiaomi app to do this,
-  you can do this with [python-miio](https://github.com/rytilahti/python-miio)
-* the linux machine needs to be on the same network as the robot
-* a good micro-USB cable (with data support) plugged into the
-  [robot’s micro-USB port](https://itooktheredpill.irgendwo.org/2020/rooting-xiaomi-vacuum-robot/).
-
-### Linux setup
-
-You may need to install these packages, e.g. for Ubuntu:
-
-    apt install android-tools-adb wget coreutils
-
-### Mac setup
-
-On Mac, install `adb` and `sha256sum` as follows:
-
-```shell
-# Package for adb
-brew install android-platform-tools
-
-# Package for sha256sum
-brew install coreutils
-```
+* a linux machine with a working `adb` install
+* a good micro-USB cable (with data support)
 
 ## Usage instructions
 
-Clone this repository, then run the following command and follow its instructions:
+### 1. Find USB
 
-    ./viomi-root.sh
+Your robot has one or even two micro USB ports, which will be used for rooting.
 
-Note: For newer viomi-v8 models, above will not work, but you can try the
-following experimental procedure based on
-[findings by @Dropaq](https://github.com/rumpeltux/python-miio/issues/1#issuecomment-915647117):
+<img src="./img/with_back_usb.jpg"/>
 
-    NEW_V8=1 ./viomi-root.sh
+If your robot has a second micro USB port in the back like in the image above please make sure to use that.
 
-## What’s the script doing?
+<img src="./img/without_back_usb.jpg"/>
 
-1. Enable the `adb shell` command.
-2. Temporarily disable robot services to allow the adb bridge to persist during setup.
-3. Install `dropbear` along with your `~/.ssh/id_rsa.pub` public key
-4. (Optionally:) Install [Valetudo](https://github.com/Hypfer/Valetudo).
+If however your robot looks like this then don't worry.
+There is a second micro USB port in the battery compartment, which is easily accessible without destroying any warranty seals:
 
-## Troubleshooting
+<img src="./img/battery_usb.jpg"/>
 
-### No adb connection is established.
+### 2. Check if ADB works
 
-* Check that adb and your cable is working in general by connecting to an android phone
-  (enable usb debugging on it), e.g. by using adb shell.
-* Check the `dmesg` output to see if your computer ever recognized a USB devices.
-  Some machines are too slow, some USB stacks flaky. People have
-  [reported success](https://github.com/rumpeltux/viomi-rooting/issues/7#issuecomment-691664493)
-  with a raspberry pi when their main computer didn’t work.
-* If you see a message like:
+Now with the USB port located, turn on the robot and wait for it to boot up.
 
-      adb: insufficient permissions for device
-      See [http://developer.android.com/tools/device.html] for more information
-  Follow [the link](http://developer.android.com/tools/device.html) for advice, in particular
-  make sure that you are a member of the plugdev group and have setup correct udev rules
-  (`dmesg` would probably show you the device ids).
-* Finally, this may not be working on first attempt, but may need multiple tries,
-  but typically not more than 10.
+If you're only seeing the adb device show for a fraction of a second on boot and otherwise get `no devices found`, then step 3.1 is for you.
+If you instead are already able to get a login shell using `adb shell` then go to 3.2.
 
-### The script was not able to establish a ssh connection and didn't finish.
+### 3.1. Enable ADB access
 
-Solution: Rerun the remaining steps of the script
+Some robots (notably the Viomi V7) disable ADB access right after bootup.
 
-    ./viomi-root.sh change_password
-    ./viomi-root.sh restore_robot_services
-    ./viomi-root.sh install_valetudo
+To fix that, please download and run the `enable-adb.sh` found in the root directory of this repo.<br/>
+After following its instructions, you should end up with a password-less rootshell via `adb shell`.
 
-### The robot appears dead, but SSH or ADB are working.
+### 3.2. Change the root password
 
-Solution (does not apply to newer viomi-v8 models):
+If running `adb shell` looks like this:
+```
+$ adb shell
+TinaLinux login:
+```
 
-* When SSH is working:
+then simply create a file named `adb_shell` with these contents:
 
-      ./viomi-root.sh restore_robot_services
-    
-* When ADB is working:
+```
+#!/bin/sh
+export ENV='/etc/adb_profile'
+exec /bin/sh "$@"
+```
 
-      adb shell
-      cd /etc/rc.d
-      ln -s ../init.d/robotManager S90robotManager
+`chmod +x` that file and then `adb push ./adb_shell /bin/adb_shell`.
 
-### I accidentally resetted the wifi settings (Robot already rooted!).
+Now, running `adb shell` again should present you with a password-less rootshell.
 
-Solution:
-1.  Please connect to your robot using: `adb shell`
-2.  Edit the `/etc/wifi/wpa_supplicant.conf` file using, e.g. vim:
-   ```
-   vim /etc/wifi/wpa_supplicant.conf
-   ```
-3.  Add these lines at the end of the file:
-    ```
-    network={
-        ssid="SSIDGOESHERE"
-        psk="PASSWORDHERE"
-    }
-    ```
-4.  Reboot the device: `reboot`
-5.  Check if your robot received an ip address: `adb shell ip a`
-6.  Try to connect over ssh from your computer, and change your `.ssh/config` file
-    accordingly `ssh root@robotIP` or `ssh vacuum`
+### 4. Backups!
+
+With a working ADB connection, now is the time to pull a backup of everything.<br/>
+For that, simply run the following commands:
+
+```
+adb pull /proc/partitions
+
+adb pull /dev/nanda
+adb pull /dev/nandb
+adb pull /dev/nandc
+adb pull /dev/nandd
+adb pull /dev/nande
+adb pull /dev/nandf
+adb pull /dev/nandg
+adb pull /dev/nandh
+adb pull /dev/nandi
+```
+
+If the partitions file contains even more nand partitions then also backup those!
+
+### 5. Install Valetudo
+
+First, head over to [the dustbuilder](https://builder.dontvacuum.me) and build a firmware package built for manual installation.<br/>
+After downloading the `tar.gz` from the link in your email, simply push it to the robot like this:<br/>
+`adb push ./<rooted_firmware_filename>.tar.gz /tmp/`
+
+You will also need the latest Valetudo binary. Download it from here:<br/>
+[https://github.com/Hypfer/Valetudo/releases/latest/download/valetudo-armv7.upx](https://github.com/Hypfer/Valetudo/releases/latest/download/valetudo-armv7.upx)
+
+It is very important that the Valetudo binary is pushed to **the correct location** on the robot:<br/>
+`adb push ./valetudo-armv7.upx /mnt/UDISK/valetudo`. 
+
+
+With that done, the last required file is the convert-robot.sh script that can be found in ths repo:<br/>
+`adb push ./convert-robot.sh /tmp/`
+
+To finalize the rooting procedure, connect with `adb shell` and then run the following commands:
+```
+sh ./convert-robot.sh
+tar xzvf ./<rooted_firmware_filename>.tar.gz
+sh ./install.sh
+```
+
+If everything went well then your robot should now be running Valetudo.
+
+As the next step, press and hold the two buttons until the robot informs you that Wi-Fi has been reset.<br/>
+Then, continue with the [getting started guide](https://valetudo.cloud/pages/general/getting-started.html#joining_wifi).
+
+
+## Credits
+
+This tooling is based on knowledge and work by
+
+- The initial Viomi research of @rumpeltux [Rooting the Xiaomi STYJ02YM (viomi-v7) Vacuum Robot](https://itooktheredpill.irgendwo.org/2020/rooting-xiaomi-vacuum-robot/)
+- The [viomi-root](https://github.com/rumpeltux/viomi-rooting) repository by @rumpeltux and community
+- Conga research by [the freeconga community](https://gitlab.com/freeconga/stuff/-/tree/master/docs)
