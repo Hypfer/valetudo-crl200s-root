@@ -4,9 +4,12 @@ This repository contains tooling to help with rooting 3irobotix CRL-200S-based v
 
 * Viomi V2
 * Mijia STYJ02YM (viomi-v7)
-* Mijia STYTJ02YM (viomi-v8)
 * Cecotec Conga 3*90
 * Proscenic M6 pro
+
+**Warning**:<br/>
+Unfortunately, there are some unresolved issues with the Mijia STYTJ02YM viomi.vacuum.v8.
+If you have that robot, you might want to ask for assistance.
 
 ## Prerequisites
 
