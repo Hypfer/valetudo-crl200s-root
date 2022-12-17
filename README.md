@@ -18,8 +18,13 @@ If you have that robot, you might want to ask for assistance.
 
 ## Usage instructions
 
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️<br/>
 **NOTE**:<br/>
-Currently, it's not possible to follow this guide as the tooling isn't finished. Please check back later
+**Currently, it's not possible to follow this guide as the tooling isn't finished. Please check back later**<br/>
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+
+<details>
+  <summary>READ THE TEXT ABOVE</summary>
 
 ### 1. Find USB
 
@@ -119,6 +124,7 @@ If everything went well then your robot should now be running Valetudo.
 As the next step, press and hold the two buttons until the robot informs you that Wi-Fi has been reset.<br/>
 Then, continue with the [getting started guide](https://valetudo.cloud/pages/general/getting-started.html#joining_wifi).
 
+</details>
 
 ## Credits
 
