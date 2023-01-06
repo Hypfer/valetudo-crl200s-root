@@ -18,14 +18,6 @@ If you have that robot, you might want to ask for assistance.
 
 ## Usage instructions
 
-⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️<br/>
-**NOTE**:<br/>
-**Currently, it's not possible to follow this guide as the tooling isn't finished. Please check back later**<br/>
-⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-
-<details>
-  <summary>READ THE TEXT ABOVE</summary>
-
 ### 1. Find USB
 
 Your robot has one or even two micro USB ports, which will be used for rooting.
@@ -121,10 +113,20 @@ sh ./install.sh
 
 If everything went well then your robot should now be running Valetudo.
 
-As the next step, press and hold the two buttons until the robot informs you that Wi-Fi has been reset.<br/>
-Then, continue with the [getting started guide](https://valetudo.cloud/pages/general/getting-started.html#joining_wifi).
+### 6. Additional model-specific steps
 
-</details>
+If your robot happens to be Conga 3790, you will need to do one last thing.
+**If you have a different robot, you must skip this step.**
+
+Because that robot uses a different Wi-Fi module, we need to do some changes. Don't worry, they're all scripted.
+
+Simply open a shell with `adb shell` and execute `/opt/8821cs/enable_8821cs.sh`.
+Then, `reboot` and you're done
+
+### 7. Start using Valetudo
+
+To join your Robot to your Wi-Fi network and start using Valetudo, press and hold the two buttons until the robot informs you that Wi-Fi has been reset.<br/>
+Then, continue with the [getting started guide](https://valetudo.cloud/pages/general/getting-started.html#joining_wifi).
 
 ## Credits
 
