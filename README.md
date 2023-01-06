@@ -3,13 +3,16 @@
 This repository contains tooling to help with rooting 3irobotix CRL-200S-based vacuum robots such as
 
 * Viomi V2
-* viomi.vacuum.v8
+* viomi.vacuum.v7
 * Cecotec Conga 3*90
 * Proscenic M6 pro
 
 **Warning**:<br/>
 Unfortunately, there are some unresolved issues with the viomi.vacuum.v8.
-If you have that robot, you might want to ask for assistance.
+If you have that robot, **do not attempt to root it.**
+
+You can determine the model of your Mi Vacuum Mop P by checking the SSID of its AP.
+If it contains "v7" you're good.
 
 ## Prerequisites
 
