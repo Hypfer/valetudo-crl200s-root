@@ -112,6 +112,7 @@ With that done, the last required file is the convert-robot.sh script that can b
 
 To finalize the rooting procedure, connect with `adb shell` and then run the following commands:
 ```
+cd /tmp/
 sh ./convert-robot.sh
 tar xzvf ./<rooted_firmware_filename>.tar.gz
 sh ./install.sh
