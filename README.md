@@ -4,8 +4,11 @@ This repository contains tooling to help with rooting 3irobotix CRL-200S-based v
 
 * Viomi V2
 * viomi.vacuum.v7
-* Cecotec Conga 3*90
+* Cecotec Conga 3290
 * Proscenic M6 pro
+* and more
+
+Please refer to the docs on [Valetudo.cloud](https://valetudo.cloud) to find a full list of all supported models.
 
 **Warning**:<br/>
 Unfortunately, there are some unresolved issues with the viomi.vacuum.v8.
