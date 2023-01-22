@@ -76,23 +76,7 @@ Now, running `adb shell` again should present you with a password-less rootshell
 ### 4. Backups!
 
 With a working ADB connection, now is the time to pull a backup of everything.<br/>
-For that, simply run the following commands:
-
-```
-adb pull /proc/partitions
-
-adb pull /dev/nanda
-adb pull /dev/nandb
-adb pull /dev/nandc
-adb pull /dev/nandd
-adb pull /dev/nande
-adb pull /dev/nandf
-adb pull /dev/nandg
-adb pull /dev/nandh
-adb pull /dev/nandi
-```
-
-If the partitions file contains even more nand partitions then also backup those!
+For that, run `create-backup.sh` on the host machine. It'll backup every partition listed in `/proc/partitions` into `backup/` folder and `backup.tar.gz` archive.
 
 ### 5. Install Valetudo
 
