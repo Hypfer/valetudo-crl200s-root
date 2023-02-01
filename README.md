@@ -11,11 +11,9 @@ This repository contains tooling to help with rooting 3irobotix CRL-200S-based v
 Please refer to the docs on [Valetudo.cloud](https://valetudo.cloud) to find a full list of all supported models.
 
 **Warning**:<br/>
-Unfortunately, there are some unresolved issues with the viomi.vacuum.v8.
-If you have that robot, **do not attempt to root it.**
-
-You can determine the model of your Mi Vacuum Mop P by checking the SSID of its AP.
-If it contains "v7" you're good.
+Do **NOT** attempt to root the following robots as it **will brick** them.
+- viomi.vacuum.v8 (check the SSID for v8 to identify it)
+- Cecotec Conga 3090
 
 ## Prerequisites
 
