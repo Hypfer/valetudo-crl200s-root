@@ -6,6 +6,7 @@ This repository contains tooling to help with rooting 3irobotix CRL-200S-based v
 * viomi.vacuum.v7
 * Cecotec Conga 3290
 * Proscenic M6 pro
+* Wyze Robot Vacuum (WVCR200S)
 * and more
 
 Please refer to the docs on [Valetudo.cloud](https://valetudo.cloud) to find a full list of all supported models.
@@ -51,6 +52,17 @@ Some robots (notably the Viomi V7) disable ADB access right after bootup.
 To fix that, please download and run the `enable-adb.sh` found in the root directory of this repo.<br/>
 After following its instructions, you should end up with a password-less rootshell via `adb shell`.
 
+### 3.1.1 Enable ADB access on Wyze Robot Vacuum (WVCR200S)
+
+To enable ADB, use the following procedure: 
+
+```
+1. Hold down home button
+2. Plug in USB cable under battery
+3. Press power button 10 times
+```
+
+Original Documentation here: https://github.com/rumpeltux/python-miio/issues/1#issuecomment-915647117
 ### 3.2. Change the root password
 
 If running `adb shell` looks like this:
