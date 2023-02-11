@@ -16,6 +16,10 @@ Do **NOT** attempt to root the following robots as it **will brick** them.
 - viomi.vacuum.v8 (check the SSID for v8 to identify it)
 - Cecotec Conga 3090
 
+**Even more important Warning**:<br/>
+Rooting vacuum robots is a dangerous procedure that can lead to unfixable bricks.
+Make sure to not attempt to root anything that you can't afford to lose.
+
 ## Prerequisites
 
 * a linux machine with a working `adb` install
