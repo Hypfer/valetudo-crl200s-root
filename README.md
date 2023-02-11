@@ -52,17 +52,6 @@ Some robots (notably the Viomi V7) disable ADB access right after bootup.
 To fix that, please download and run the `enable-adb.sh` found in the root directory of this repo.<br/>
 After following its instructions, you should end up with a password-less rootshell via `adb shell`.
 
-### 3.1.1 Enable ADB access on Wyze Robot Vacuum (WVCR200S)
-
-To enable ADB, use the following procedure: 
-
-```
-1. Hold down home button
-2. Plug in USB cable under battery
-3. Press power button 10 times
-```
-
-Original Documentation here: https://github.com/rumpeltux/python-miio/issues/1#issuecomment-915647117
 ### 3.2. Change the root password
 
 If running `adb shell` looks like this:
@@ -144,6 +133,25 @@ Then, `reboot` and you're done
 
 To join your Robot to your Wi-Fi network and start using Valetudo, press and hold the two buttons until the robot informs you that Wi-Fi has been reset.<br/>
 Then, continue with the [getting started guide](https://valetudo.cloud/pages/general/getting-started.html#joining_wifi).
+
+## Troubleshooting
+
+If you never see ADB show up at all and have made sure to try with different USB cables, USB ports and also different hosts, some users reported that they had success with these instructions:
+
+```
+1. Long press the power key for at least 10 seconds to power off the device
+2. Keep USB connected to the robot, but not to the PC
+3. Press the "Home" key and do not release it.
+4. Connect the USB to the PC
+5. Click power key for about 10 times (on some robots: hold the power key for about 10-11 seconds)
+6. Release both keys
+7. Enjoy ADB
+```
+
+Personally, I haven't had any success with those though, so please take this with a grain of salt.
+
+Source:
+[https://github.com/rumpeltux/python-miio/issues/1#issuecomment-915647117](https://github.com/rumpeltux/python-miio/issues/1#issuecomment-915647117)
 
 ## Credits
 
