@@ -6,18 +6,20 @@ This repository contains tooling to help with rooting 3irobotix CRL-200S-based v
 * viomi.vacuum.v7
 * Cecotec Conga 3290
 * Proscenic M6 pro
-* Wyze Robot Vacuum (WVCR200S)
 * and more
 
 Please refer to the docs on [Valetudo.cloud](https://valetudo.cloud) to find a full list of all supported models.
 
 **Warning**:<br/>
 Do **NOT** attempt to root the following robots as it **will brick** them.
-- viomi.vacuum.v8 (check the SSID for v8 to identify it)
 - Cecotec Conga 3090
 
+Additionally, be advised that rooting these **can** work for some but **cause bricks** for other units with no way of knowing if yours will work beforehand:
+- viomi.vacuum.v8 (check the SSID for v8 to identify it)
+- Wyze Robot Vacuum
+
 **Even more important Warning**:<br/>
-Rooting vacuum robots is a dangerous procedure that can lead to unfixable bricks.
+In general, rooting vacuum robots is a dangerous procedure that can lead to unfixable bricks.
 Make sure to not attempt to root anything that you can't afford to lose.
 
 ## Prerequisites
