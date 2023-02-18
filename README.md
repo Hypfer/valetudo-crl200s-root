@@ -127,10 +127,14 @@ If everything went well then your robot should now be running Valetudo.
 
 ### 6. Additional model-specific steps
 
-If your robot happens to be Conga 3790, you will need to do one last thing.
-**If you have a different robot, you must skip this step.**
+So far, we've identified a few models that have the same hardware but with a different Wi-Fi module (RTL8821CS instead of the RTL8189ES):
 
-Because that robot uses a different Wi-Fi module, we need to do some changes. Don't worry, they're all scripted.
+- Cecotec Conga 3690
+- Cecotec Conga 3790
+- Commodore CVR 200
+
+If your robot happens to be one of those, you will need to do one last thing.
+**If you have a different robot, you must skip this step.**
 
 Simply open a shell with `adb shell` and execute `/opt/8821cs/enable_8821cs.sh`.
 Then, `reboot` and you're done
