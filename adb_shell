@@ -1,0 +1,3 @@
+#!/bin/sh
+export ENV='/etc/adb_profile'
+exec /bin/sh "$@"
