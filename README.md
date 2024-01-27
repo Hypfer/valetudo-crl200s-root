@@ -66,15 +66,7 @@ $ adb shell
 TinaLinux login:
 ```
 
-then simply create a file named `adb_shell` with these contents:
-
-```
-#!/bin/sh
-export ENV='/etc/adb_profile'
-exec /bin/sh "$@"
-```
-
-`chmod +x` that file and then `adb push ./adb_shell /bin/adb_shell`.
+then run `adb push ./adb_shell /bin/adb_shell`.
 
 Now, running `adb shell` again should present you with a password-less rootshell.
 
