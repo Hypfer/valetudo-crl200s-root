@@ -22,6 +22,11 @@ Additionally, be advised that rooting these **can** work for some but **cause br
 In general, rooting vacuum robots is a dangerous procedure that can lead to unfixable bricks.
 Make sure to not attempt to root anything that you can't afford to lose.
 
+**Preparing the robot**:<br/>
+In case you currently have cleaning schedules set up on the robot, please make sure to disable or delete them before rooting.
+Otherwise, those will stay active and you won't be able to disable them later via the app.
+(Disabling them later is still possible via SSH though by manually editing the file `/mnt/UDISK/config/booking_list_config.ini` and setting `order_enable=0` for each task.)
+
 ## Prerequisites
 
 * a linux machine with a working `adb` install
