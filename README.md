@@ -26,6 +26,7 @@ Make sure to not attempt to root anything that you can't afford to lose.
 
 * a linux machine with a working `adb` install
 * a good micro-USB cable (with data support)
+* a factory-reset supported robot
 
 ## Usage instructions
 
