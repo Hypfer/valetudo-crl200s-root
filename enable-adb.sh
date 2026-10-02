@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function main() {
   for tool in adb; do
@@ -53,7 +53,7 @@ function connect_adb() {
 
 function adb_loop() {
   while true; do
-    adb $@ | grep -v "no devices/emulators found" && break
+    adb wait-for-device && adb $@ && break
   done
 }
 
@@ -73,7 +73,7 @@ function persist_adb_shell() {
 
 function wait_for_adb_shell() {
   while true; do
-    adb shell echo shell_is_ready 2>&1 | grep -v "no devices/emulators found" | grep "shell_is_ready" && break
+    adb wait-for-device shell echo shell_is_ready 2>/dev/null | grep "shell_is_ready" && break
   done
 }
 
