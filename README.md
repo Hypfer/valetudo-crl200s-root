@@ -143,7 +143,7 @@ Then, `reboot` and you're done
 ### 7. Start using Valetudo
 
 To join your Robot to your Wi-Fi network and start using Valetudo, press and hold the two buttons until the robot informs you that Wi-Fi has been reset.<br/>
-Then, continue with the [getting started guide](https://valetudo.cloud/pages/general/getting-started.html#joining_wifi).
+Then, continue with the [getting started guide](https://valetudo.cloud/pages/general/getting-started/#joining_wifi).
 
 ## Troubleshooting
 
