@@ -102,7 +102,7 @@ If the partitions file contains even more nand partitions then also backup those
 
 ### 5. Install Valetudo
 
-First, head over to [the dustbuilder](https://builder.dontvacuum.me) and build a firmware package built for manual installation.<br/>
+First, head over to [the dustbuilder](https://fab.valetudo.cloud/build/picea/crl-200s-viomi) and build a firmware package built for manual installation.<br/>
 After downloading the `tar.gz` from the link in your email, simply push it to the robot like this:<br/>
 `adb push ./<rooted_firmware_filename>.tar.gz /tmp/`
 
